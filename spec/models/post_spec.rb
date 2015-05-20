@@ -18,7 +18,7 @@ describe 'Post Class' do
     expect(post.comments).not_to be_empty
   end
 
-  it 'can list all posts of people who have commented on this post'do
+  it 'can list all posts of people who have commented on this post' do
     #        post
     #       /     \
     # my_comment   this_comment
