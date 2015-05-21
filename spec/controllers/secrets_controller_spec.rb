@@ -1,10 +1,6 @@
 require 'rails_helper'
 RSpec.describe SecretsController do
   describe 'GET #show' do
-    let(:set_current_user) { 
-      user = create(:person)
-      session['cas'] = { 'user' => user.name }
-    }
 
     context 'unauthorized' do
       it 'renders 401 status' do
@@ -15,16 +11,17 @@ RSpec.describe SecretsController do
 
     context 'authorization' do
       it 'works manually and renders 200' do
-        user = create(:person)
+        user = build(:person)
         session['cas'] = { 'user' => user.name }
         get :show
         expect(response.status).to eq(200)
       end
-      it 'works with a `:let` method and renders 200' do
-        set_current_user
+      it 'works with a helper method and renders 200' do
+        set_current_user(create(:person))
         get :show
         expect(response.status).to eq(200)
       end
+
     end
   end
 end

@@ -18,7 +18,15 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'factory_girl_rails'
 
+module LoginHelper
+  def set_current_user(user)
+    session['cas'] = { 'user' => user.name }
+  end
+end
+
 RSpec.configure do |config|
+
+  config.include LoginHelper
   
   config.include FactoryGirl::Syntax::Methods
   # rspec-expectations config goes here. You can use an alternate

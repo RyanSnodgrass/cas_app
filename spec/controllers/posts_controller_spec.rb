@@ -1,11 +1,8 @@
 require 'rails_helper'
 RSpec.describe PostsController do
   describe 'GET #index' do
-    let(:set_current_user) { 
-      user = create(:person)
-      session['cas'] = { 'user' => user.name }
-    }
-    
+    # DatabaseCleaner.strategy = :truncation
+    # DatabaseCleaner.clean
     context 'unauthorized' do
       it 'renders 401 status' do
         get :index
@@ -14,16 +11,23 @@ RSpec.describe PostsController do
     end
 
     context 'authorization' do
-      it 'works manually and renders 200' do
-        user = create(:person)
-        session['cas'] = { 'user' => user.name }
+      render_views
+      it 'renders 200' do
+        set_current_user(build(:person))
         get :index
         expect(response.status).to eq(200)
       end
-      it 'works with a helper method and renders 200' do
-        set_current_user
+      it 'renders the index page' do
+        set_current_user(build(:person))
         get :index
-        expect(response.status).to eq(200)
+        expect(response).to render_template(:index)
+      end
+      it 'populates an array of posts' do
+        set_current_user(build(:person))
+        this_post = create(:post)
+        that_post = create(:post)
+        get :index
+        expect(assigns(:posts)).to eq([this_post, that_post])
       end
     end
   end
