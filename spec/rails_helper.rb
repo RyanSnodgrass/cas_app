@@ -26,7 +26,6 @@ require 'database_cleaner'
 
 RSpec.configure do |config|
   DatabaseCleaner.strategy = :truncation  #for transaction strategy
- # #DatabaseCleaner[:neo4j, connection: {type: :server_db, path: 'http://localhost:7475'}].strategy = :deletion     #for deletion strategy
   DatabaseCleaner[:neo4j, connection: {type: :server_db, path: 'http://localhost:7475'}]
 
   config.before(:each) do
