@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate
-    if ( !request.session.has_key?("cas") )
-      render status: 401
-    end
+    render status: 401 unless request.session.key?('cas')
   end
-
 end

@@ -25,7 +25,6 @@ module LoginHelper
 end
 
 RSpec.configure do |config|
-
   config.include LoginHelper
   
   config.include FactoryGirl::Syntax::Methods

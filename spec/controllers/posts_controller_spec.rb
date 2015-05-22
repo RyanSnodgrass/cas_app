@@ -1,8 +1,6 @@
 require 'rails_helper'
 RSpec.describe PostsController do
   describe 'GET #index' do
-    # DatabaseCleaner.strategy = :truncation
-    # DatabaseCleaner.clean
     context 'unauthorized' do
       it 'renders 401 status' do
         get :index

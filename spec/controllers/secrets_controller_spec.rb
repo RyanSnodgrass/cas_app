@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe SecretsController do
   describe 'GET #show' do
-
     context 'unauthorized' do
       it 'renders 401 status' do
         get :show
@@ -21,7 +20,6 @@ RSpec.describe SecretsController do
         get :show
         expect(response.status).to eq(200)
       end
-
     end
   end
 end
