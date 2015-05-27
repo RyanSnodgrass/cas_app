@@ -1,6 +1,5 @@
 class SecretsController < ApplicationController
-  before_action :authenticate
   def show
+    authenticate
   end
-
 end

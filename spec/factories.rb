@@ -12,5 +12,4 @@ FactoryGirl.define do
     title Faker::App.name
     body Faker::Lorem.paragraph
   end
-  
 end

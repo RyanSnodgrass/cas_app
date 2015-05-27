@@ -1,10 +1,9 @@
 require 'rails_helper'
-
 describe 'Person Class' do
   # Just remember that the 'build' method only creates the object
   # It doesn't actually save it on the Database
-  let(:person) {create(:person)}
-    
+  let(:person) { create(:person) }
+
   it 'is valid' do
     expect(person).to be_valid
   end
@@ -20,7 +19,4 @@ describe 'Person Class' do
     person.comments << create(:comment)
     expect(person.comments).not_to be_empty
   end
-  
-
-
 end

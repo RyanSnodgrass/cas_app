@@ -7,6 +7,10 @@ Rails.application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
+  config.web_console.whitelisted_ips = '10.0.2.2'
+  config.neo4j.session_options = { basic_auth: { username: 'neo4j', password: 'password'} } 
+  config.neo4j.session_type = :server_db
+  config.neo4j.session_path = 'http://localhost:7475'
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.
