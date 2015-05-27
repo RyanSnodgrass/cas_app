@@ -20,9 +20,9 @@ describe 'login feature' do
   end
 end
 
-describe 'stuff which requires js', js: true do
-  xit 'will visit an external webpage' do
-    visit('http://example.com')
-    expect(page).to have_content('Example Domain')
-  end
-end
+# describe 'stuff which requires js', js: true do
+#   it 'will visit an external webpage' do
+#     visit('http://example.com')
+#     expect(page).to have_content('Example Domain')
+#   end
+# end

@@ -15,9 +15,10 @@ describe 'Post Class' do
 
   it 'can create an association with comments' do
     comment = create(:comment)
+    this_comment = create(:comment)
     post.comments << comment
     post.save
-    expect(post.comments).to eq([comment])
+    expect(post.comments).to eq([this_comment])
   end
 
   #        post

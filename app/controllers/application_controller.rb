@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate
-    render status: 401 unless request.session.key?('cas')
+    unless request.session.key?('cas')
+      puts 'rendering 401'
+      render status: 401, text: ''
+    end
+  end
+
+  def current_user
+    @current_user = Person.find_by(netid: session_user)
   end
 end
